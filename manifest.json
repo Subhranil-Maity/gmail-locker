@@ -1,17 +1,20 @@
 {
   "manifest_version": 3,
-  "name": "Gmail Blur for Specific Email",
+  "name": "Gmail Locker",
   "version": "1.0",
-  "description": "Blurs Gmail when a specific email is logged in until password is entered.",
-  "permissions": ["scripting", "storage"],
-  "host_permissions": ["https://mail.google.com/*"],
+  "permissions": ["storage", "tabs", "scripting"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
   "content_scripts": [
     {
       "matches": ["https://mail.google.com/*"],
       "js": ["content.js"]
     }
   ],
-  "action": {
+  "background": {
+    "service_worker": "background.js"
   }
 }
 
