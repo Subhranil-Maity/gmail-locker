@@ -1,20 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
   <title>Gmail Locker</title>
-  <style>
-    body { font-family: sans-serif; padding: 10px; width: 250px; }
-    input { width: 100%; margin-bottom: 8px; }
-    button { width: 100%; }
-    ul { padding-left: 0; list-style: none; }
-  </style>
-</head>
+</head><link rel="stylesheet" href="style.css">
 <body>
-  <h3>Gmail Locks</h3>
+  <h3>🔒 Gmail Locks</h3>
+
   <input id="email" placeholder="Email" />
   <input id="password" placeholder="Password" type="password" />
+	<div hidden id="error-string"></div>
   <button id="add">Add Lock</button>
 
+  <h3>🔒Locked Gmails</h3>
   <ul id="lockList"></ul>
 
   <script src="popup.js"></script>
