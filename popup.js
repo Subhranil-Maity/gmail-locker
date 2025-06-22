@@ -23,7 +23,7 @@ function renderList() {
 
     Object.keys(locks).forEach(email => {
       const li = document.createElement("li");
-      li.textContent = email;
+      li.textContent = email + " - " + locks[email];
       ul.appendChild(li);
     });
   });
