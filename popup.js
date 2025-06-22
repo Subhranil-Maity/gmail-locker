@@ -35,7 +35,7 @@ function renderList() {
 
     Object.keys(locks).forEach(email => {
       const li = document.createElement("li");
-      li.textContent = email + " - " + locks[email];
+      li.textContent = email;
       ul.appendChild(li);
     });
   });
