@@ -21,7 +21,6 @@ document.getElementById("add").addEventListener("click", () => {
     locks[email] = password;
 
     chrome.storage.local.set({ locks }, () => {
-      alert("Lock added.");
       renderList();
     });
   });
@@ -35,7 +34,32 @@ function renderList() {
 
     Object.keys(locks).forEach(email => {
       const li = document.createElement("li");
-      li.textContent = email;
+
+      // Email label
+      const emailSpan = document.createElement("span");
+      emailSpan.textContent = email;
+
+      // Delete button
+      const deleteBtn = document.createElement("button");
+      deleteBtn.textContent = "✖";
+      deleteBtn.style.background = "#e74c3c";
+      deleteBtn.style.color = "white";
+      deleteBtn.style.border = "none";
+      deleteBtn.style.borderRadius = "4px";
+      deleteBtn.style.padding = "4px 8px";
+      deleteBtn.style.cursor = "pointer";
+			deleteBtn.style.width = "75px";
+
+      // Delete logic
+      deleteBtn.addEventListener("click", () => {
+        delete locks[email];
+        chrome.storage.local.set({ locks }, () => {
+          renderList(); // Refresh the list
+        });
+      });
+
+      li.appendChild(emailSpan);
+      li.appendChild(deleteBtn);
       ul.appendChild(li);
     });
   });
