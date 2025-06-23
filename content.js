@@ -36,7 +36,7 @@ function lockScreen(emailToProtect) {
       .lock-wrapper {
         width: 100vw;
         height: 100vh;
-        background: rgba(255, 255, 255, 0.97);
+        background: rgba(255, 255, 255, 0.99);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -143,11 +143,13 @@ function checkAndLock() {
 	const email = getLoggedInEmail();
 	if (!email || isEmailUnlocked(email)) return;
 
-	chrome.storage.local.get(["locks"], (data) => {
-		if (data.locks && data.locks[email]) {
-			lockScreen(email);
-		}
-	});
+	if (typeof chrome !== "undefined" && chrome.storage) {
+		chrome.storage.local.get(["locks"], (data) => {
+			if (data.locks && data.locks[email]) {
+				lockScreen(email);
+			}
+		});
+	}
 }
 
 // Gmail is dynamic, so observe title changes

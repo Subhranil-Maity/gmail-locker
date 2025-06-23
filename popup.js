@@ -1,3 +1,8 @@
+if (getLoggedInEmail()) {
+  const email = document.getElementById("email").value.trim();
+	email.value = getLoggedInEmail();
+
+}
 document.getElementById("add").addEventListener("click", () => {
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value.trim();
@@ -48,14 +53,20 @@ function renderList() {
       deleteBtn.style.borderRadius = "4px";
       deleteBtn.style.padding = "4px 8px";
       deleteBtn.style.cursor = "pointer";
-			deleteBtn.style.width = "75px";
 
-      // Delete logic
+      // Delete logic with password confirmation
       deleteBtn.addEventListener("click", () => {
-        delete locks[email];
-        chrome.storage.local.set({ locks }, () => {
-          renderList(); // Refresh the list
-        });
+        const enteredPassword = prompt(`Enter password to delete lock for ${email}:`);
+        if (enteredPassword === null) return; // Cancel pressed
+
+        if (enteredPassword === locks[email]) {
+          delete locks[email];
+          chrome.storage.local.set({ locks }, () => {
+            renderList(); // Refresh the list
+          });
+        } else {
+          alert("Incorrect password. Cannot delete.");
+        }
       });
 
       li.appendChild(emailSpan);
