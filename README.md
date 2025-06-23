@@ -9,14 +9,21 @@ A lightweight Chrome extension to protect specific Gmail accounts by locking the
 - 🔐 Lock Gmail accounts by email address
 - 🧩 Custom password prompt overlay (not your Google password!)
 - 📥 Manage locked accounts via a popup interface
-- 🛡️ Secure password storage using hashed values
 - 🕵️ Prevents viewing, even if someone switches tabs or reloads
 - ✨ Smooth, blurred overlay with animation and styling
 
 ---
 
 ## 📸 Screenshots
-![Alt text](/Screenshots/lock.png?raw=true "Optional Title")
+![image](https://github.com/user-attachments/assets/7edb36c4-6338-48bf-b188-7b5b0f066d82)
+
+## Videos
+
+
+https://github.com/user-attachments/assets/e5975cca-1e42-47bb-8092-77c691d07288
+
+
+
 
 ## 🛠️ How It Works
 
