@@ -1,8 +1,3 @@
-if (getLoggedInEmail()) {
-  const email = document.getElementById("email").value.trim();
-	email.value = getLoggedInEmail();
-
-}
 document.getElementById("add").addEventListener("click", () => {
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value.trim();
@@ -53,6 +48,7 @@ function renderList() {
       deleteBtn.style.borderRadius = "4px";
       deleteBtn.style.padding = "4px 8px";
       deleteBtn.style.cursor = "pointer";
+      deleteBtn.style.width = "75px";
 
       // Delete logic with password confirmation
       deleteBtn.addEventListener("click", () => {

@@ -143,13 +143,11 @@ function checkAndLock() {
 	const email = getLoggedInEmail();
 	if (!email || isEmailUnlocked(email)) return;
 
-	if (typeof chrome !== "undefined" && chrome.storage) {
 		chrome.storage.local.get(["locks"], (data) => {
 			if (data.locks && data.locks[email]) {
 				lockScreen(email);
 			}
 		});
-	}
 }
 
 // Gmail is dynamic, so observe title changes
